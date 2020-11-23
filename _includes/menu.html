@@ -1,0 +1,38 @@
+{% if include.menu %}
+  <nav>
+  {% for item in include.menu %}
+    {%- assign node = site.pages | where: "name", item.file | first -%}
+    {%- assign url = item.url | default: node.url -%}
+    {%- assign title = item.title | default: node.title -%}
+    <a aria-label="{{ title }}" href="{{ url | relative_url }}" {% if url == page.url %}class="selected"{% endif %}>
+      {%- if item.icon and site.sidebar or include.icons == true -%}
+        <svg aria-hidden="true" {% unless include.icons %}class="hidden"{% endunless %}><use xlink:href="{{ "/assets/fontawesome/icons.svg" | relative_url }}#{{ item.icon }}"></use></svg>
+      {%- endif -%}
+      {%- if title and site.sidebar or include.icons != true -%}
+        <span aria-hidden="true" {% if include.icons %}class="hidden"{% endif %}>{{ title }}</span>
+      {%- endif -%}
+    </a>
+  {% endfor %}
+  </nav>
+  <div id="search">
+      <input id="search-input" type="search" placeholder="Search..." value="" />
+  </div>
+  <ul class="search__results" id="results-container"></ul>
+{% endif %}
+
+
+<!-- Script pointing to jekyll-search.js -->
+<script src="{{site.baseurl}}/dest/jekyll-search.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '{{ site.baseurl }}/search2.json',
+        searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
+        noResultsText: '<li>No results found</li>',
+        limit: 15,
+        fuzzy: false,
+        exclude: ['Welcome']
+    })
+</script><!-- #header -->
