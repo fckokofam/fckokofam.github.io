@@ -2,7 +2,37 @@
 layout: default
 ---
 <!-- about page -->
-<article>
-  <header><h1><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h1></header>
-  {{ content }}
-</article>
+<div class="splash-container">
+  <div class="splash">
+    <h1>fckokofam blog</h1>
+    <!-- <span class="handle">@fckokofam</span> -->
+
+    <div class="social-icons">
+      <a class="social-icons__link" title="Twitter"
+         href="https://twitter.com/userid"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('{{ site.asset_url }}/images/twitter.svg')"></div>
+      </a>
+      <a class="social-icons__link" title="GitHub"
+         href="https://github.com/userid"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('{{ site.asset_url }}/images/github.svg')"></div>
+      </a>
+      <a class="social-icons__link" title="Email"
+         href="mailto:mail@mail.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('{{ site.asset_url }}/images/email.svg')"></div>
+      </a>
+      <a class="social-icons__link" title="Facebook"
+         href="https://facebook.com/userid"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('{{ site.asset_url }}/images/facebook.svg')"></div>
+      </a>
+      <a class="social-icons__link" title="LinkedIn"
+         href="https://www.linkedin.com/in/userid"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon" style="background-image: url('{{ site.asset_url }}/images/linkedin.svg')"></div>
+      </a>
+    </div>
+  </div>
+</div>
