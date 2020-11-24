@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-11-24T22:33:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Blog Title</title><subtitle>Made with &lt;b style=&quot;color: #f45;&quot;&gt;&amp;lt;3&lt;/b&gt; by &lt;b&gt;&lt;a href=&quot;https://github.com/niklasbuschmann&quot;&gt;@niklasbuschmann&lt;/a&gt;&lt;/b&gt;</subtitle><author><name>Blog Author</name></author><entry><title type="html">_posts 경로 markdown 생성 스크립트</title><link href="http://localhost:4000/markdown-add-script/" rel="alternate" type="text/html" title="_posts 경로 markdown 생성 스크립트" /><published>2020-11-24T20:01:52+09:00</published><updated>2020-11-24T20:01:52+09:00</updated><id>http://localhost:4000/markdown-add-script</id><content type="html" xml:base="http://localhost:4000/markdown-add-script/">&lt;h4 class=&quot;no_toc&quot; id=&quot;code&quot;&gt;Code&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#date=`date +%Y-%m-%d`&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'+%Y-%m-%d'&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;datet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'+%Y-%m-%d %H:%M:%S'&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;gitpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; _posts 파일 경로
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$# &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-ne&lt;/span&gt; 1 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+            &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Usage: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;basename&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &amp;lt;title&amp;gt;&quot;&lt;/span&gt;
+                &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;99
+        &lt;span class=&quot;k&quot;&gt;fi
+
+        &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;
+
+        &lt;span class=&quot;nv&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$gitpath&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt;-&lt;span class=&quot;nv&quot;&gt;$title&lt;/span&gt;.md
+
+&lt;span class=&quot;nb&quot;&gt;touch&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$path&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;__EOF__&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$path&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+---
+layout: post
+title:  &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$title&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+date:   &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$datet&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; +0900
+description: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$title&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
+---
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;__EOF__
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Blog Author</name></author><summary type="html">Code #!/bin/bash #date=`date +%Y-%m-%d` date=$(date '+%Y-%m-%d') datet=$(date '+%Y-%m-%d %H:%M:%S') gitpath= _posts 파일 경로 if [ $# -ne 1 ]; then echo &quot;Usage: $(basename $0) &amp;lt;title&amp;gt;&quot; exit 99 fi title=$1 path=$gitpath/$date-$title.md touch $path cat &amp;lt;&amp;lt;__EOF__&amp;gt;&amp;gt; $path --- layout: post title: $title date: $datet +0900 description: $title --- __EOF__</summary></entry><entry><title type="html">regular_expression_example</title><link href="http://localhost:4000/regular-expression-example/" rel="alternate" type="text/html" title="regular_expression_example" /><published>2020-07-14T13:10:35+09:00</published><updated>2020-07-14T13:10:35+09:00</updated><id>http://localhost:4000/regular-expression-example</id><content type="html" xml:base="http://localhost:4000/regular-expression-example/">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;평균 계산
+data : 64 bytes from 8.8.8.8: icmp_seq=1 ttl=51 time=39.7 ms
+command : sed -n 's/^.*time=\(.*\) ms/\1/p' aa | awk '{sum+=$1} END{print sum/NR}'
+ - sed : 필터링과 텍스트를 변환하는 스트림 편집기
+ - sed -n : 포함한 행만 출력
+ - s/^.*time=\(.*\) ms/\1/: &quot;^.*time=\(.*\) ms&quot;을 &quot;\1&quot;로 치환
+ - ^.* : 모든 문자열
+ - \(.*\) : ( )그룹핑, \(.*\) = (.*) = 모든 문자열
+ - \1 : 그룹핑의 매개변수 = \(.*\)
+ - p : 출력
+ - aa : 파일 명
+ - awk : 패턴 탐색과 처리를 위한 명령어
+ - {sum+=$1} : 그룹핑의 값들을 더함
+ - END{print sum/NR} : 더한 값들의 평균을 계산
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Blog Author</name></author><summary type="html">평균 계산 data : 64 bytes from 8.8.8.8: icmp_seq=1 ttl=51 time=39.7 ms command : sed -n 's/^.*time=\(.*\) ms/\1/p' aa | awk '{sum+=$1} END{print sum/NR}' - sed : 필터링과 텍스트를 변환하는 스트림 편집기 - sed -n : 포함한 행만 출력 - s/^.*time=\(.*\) ms/\1/: &quot;^.*time=\(.*\) ms&quot;을 &quot;\1&quot;로 치환 - ^.* : 모든 문자열 - \(.*\) : ( )그룹핑, \(.*\) = (.*) = 모든 문자열 - \1 : 그룹핑의 매개변수 = \(.*\) - p : 출력 - aa : 파일 명 - awk : 패턴 탐색과 처리를 위한 명령어 - {sum+=$1} : 그룹핑의 값들을 더함 - END{print sum/NR} : 더한 값들의 평균을 계산</summary></entry><entry><title type="html">Regular_expression</title><link href="http://localhost:4000/Regular-expression/" rel="alternate" type="text/html" title="Regular_expression" /><published>2020-07-14T10:42:06+09:00</published><updated>2020-07-14T10:42:06+09:00</updated><id>http://localhost:4000/Regular-expression</id><content type="html" xml:base="http://localhost:4000/Regular-expression/">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;정규식 #
+[] : '[]'안의 문자는 바깥에서 하나의 문자로 취급
+  - ^ : '[]'안의 ^는 not
+  - - : a-z는 a부터 z까지 문자
+^ : 문자열 시작
+$ : 문자열 종료
+&amp;amp; : 검색문자열 치환
+? : 없거나 1이거나
+Dot(.) : \n(줄바꿈)을 제외한 모든 문자 매칭
++ : 하나 이상
+* : 0개 이상
+| : OR과 동일
+\&amp;lt; : 단어의 시작
+&amp;gt; : 단어의 끝
+x{m,n} : m,n 구간 반복
+\A : 문자열의 처음과 매칭
+\Z : 문자열의 끝과 매칭
+( ) : 그루핑, 하나의 패턴구분자 안에 서브 패턴을 지정해서 사용
+\s : 공백 문자
+\b : 무자와 공백 사이
+\d : 숫자[0-9]
+\t : tab문자
+
+
+
+연산자 #
+[범위]/p: 지정 범위 출력
+[범위]/d: 지정 범위 삭제
+[범위]/문자1/문자2: 지정된 범위의 처음 나타난 문자를 문자2로
+s/문자1/문자2/: 문자1을 2로
+g: 모든 라인에 적용
+
+\0 : 전체 결과
+\1 : 재참조 메타 문자(그룹핑을 참조, 그룹핑 : ( ) 안에 있는 것)
+
+정규표현식 사이트 : https://regexr.com/
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Blog Author</name></author><summary type="html">``` 정규식 # [] : ‘[]’안의 문자는 바깥에서 하나의 문자로 취급 ^ : ‘[]’안의 ^는 not : a-z는 a부터 z까지 문자 ^ : 문자열 시작 $ : 문자열 종료 &amp;amp; : 검색문자열 치환 ? : 없거나 1이거나 Dot(.) : \n(줄바꿈)을 제외한 모든 문자 매칭 : 하나 이상 : 0개 이상 | : OR과 동일 &amp;lt; : 단어의 시작 : 단어의 끝 x{m,n} : m,n 구간 반복 \A : 문자열의 처음과 매칭 \Z : 문자열의 끝과 매칭 ( ) : 그루핑, 하나의 패턴구분자 안에 서브 패턴을 지정해서 사용 \s : 공백 문자 \b : 무자와 공백 사이 \d : 숫자[0-9] \t : tab문자</summary></entry><entry><title type="html">cygwin bash 설정 파일</title><link href="http://localhost:4000/cywin-bash-setting/" rel="alternate" type="text/html" title="cygwin bash 설정 파일" /><published>2020-07-12T21:53:47+09:00</published><updated>2020-07-12T21:53:47+09:00</updated><id>http://localhost:4000/cywin-bash-setting</id><content type="html" xml:base="http://localhost:4000/cywin-bash-setting/">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;alias C:='cd /cygdrive/c'
+alias F:='cd /cygdrive/f'
+alias G:='cd /cygdrive/g'
+alias TMP:='cd /cygdrive/c/cygwin/tmp'
+alias CYG:='cd /cygdrive/c/cygwin'
+alias GIT:='cd /cygdrive/c/git'
+alias PY:='cd /cygdrive/c/python'
+alias cls='clear'
+alias euc='export LANG=ko_KR.euckr'
+alias utf='export LANG=ko_KR.utf8'
+alias tm='unset TMOUT'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias ci='/cygdrive/c/cygwin/setup-x86_64.exe -q -P '
+alias gem='/cygdrive/c/Ruby26-x64/bin/gem.bat'
+
+
+# Original
+#export PS1=&quot;\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ &quot;
+# 5c
+#export PS1=&quot;\[\e]0;\w\a\]\n\[\e[32m\]5c \[\e[33m\]\w\[\e[0m\]\n\$ &quot;
+export PS1=&quot;\[\e]0;\w\a\]\[\e[32m\]5c \[\e[33m\]\w\[\e[0m\]\$ &quot;
+
+set -o vi
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Blog Author</name></author><summary type="html">``` alias C:=’cd /cygdrive/c’ alias F:=’cd /cygdrive/f’ alias G:=’cd /cygdrive/g’ alias TMP:=’cd /cygdrive/c/cygwin/tmp’ alias CYG:=’cd /cygdrive/c/cygwin’ alias GIT:=’cd /cygdrive/c/git’ alias PY:=’cd /cygdrive/c/python’ alias cls=’clear’ alias euc=’export LANG=ko_KR.euckr’ alias utf=’export LANG=ko_KR.utf8’ alias tm=’unset TMOUT’ alias egrep=’egrep –color=auto’ alias fgrep=’fgrep –color=auto’ alias grep=’grep –color=auto’ alias ci=’/cygdrive/c/cygwin/setup-x86_64.exe -q -P ‘ alias gem=’/cygdrive/c/Ruby26-x64/bin/gem.bat’</summary></entry><entry><title type="html">git 명령어</title><link href="http://localhost:4000/git-command/" rel="alternate" type="text/html" title="git 명령어" /><published>2020-07-12T21:41:30+09:00</published><updated>2020-07-12T21:41:30+09:00</updated><id>http://localhost:4000/git-command</id><content type="html" xml:base="http://localhost:4000/git-command/">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add *
+git commit -m &quot;first blog update&quot;
+git push -u origin master
+
+git config --list
+git config --global user.name &quot;userid&quot;
+git config --global user.email &quot;user@email.com&quot;
+
+warning: LF will be replaced by CRLF in _posts/2020-07-14-Regular_expression.markdown.
+The file will have its original line endings in your working directory
+ → Whitespace 에러, 유닉스 시스템에서는 한 줄의 끝이 LF(Line Feed)로 이루지기 때문에
+   git에게 혼란을 줌
+   해결 : git config --global core.autocrlf true
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Blog Author</name></author><summary type="html">git add * git commit -m &quot;first blog update&quot; git push -u origin master git config --list git config --global user.name &quot;userid&quot; git config --global user.email &quot;user@email.com&quot; warning: LF will be replaced by CRLF in _posts/2020-07-14-Regular_expression.markdown. The file will have its original line endings in your working directory → Whitespace 에러, 유닉스 시스템에서는 한 줄의 끝이 LF(Line Feed)로 이루지기 때문에 git에게 혼란을 줌 해결 : git config --global core.autocrlf true</summary></entry><entry><title type="html">apache-tomcat connector</title><link href="http://localhost:4000/apache-tomcat-connect/" rel="alternate" type="text/html" title="apache-tomcat connector" /><published>2020-07-03T19:25:00+09:00</published><updated>2020-07-03T19:25:00+09:00</updated><id>http://localhost:4000/apache-tomcat-connect</id><content type="html" xml:base="http://localhost:4000/apache-tomcat-connect/">&lt;p&gt;LoadModule 주석 해제&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;LoadModule&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proxy_module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;modules&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mod_proxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;so&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;LoadModule&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proxy_http_module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;modules&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mod_proxy_http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;so&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;VirtualHost 생성&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VirtualHost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ServerName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wisoft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;com&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ErrorLog&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;logs/admin@wisoft.com-error_log&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;CustomLog&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;logs/admin@wisoft.com-access_log&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;common&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;ProxyRequests&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Off&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ProxyPreserveHost&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;On&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Proxy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&amp;gt;&lt;/span&gt;
+	   &lt;span class=&quot;n&quot;&gt;Order&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allow&lt;/span&gt;
+	    &lt;span class=&quot;n&quot;&gt;Allow&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Proxy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;ProxyPass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//192.168.0.32:8080/&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ProxyPassReverse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//192.168.0.32:8080/&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VirtualHost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Blog Author</name></author><summary type="html">LoadModule 주석 해제 LoadModule proxy_module modules/mod_proxy.so LoadModule proxy_http_module modules/mod_proxy_http.so VirtualHost 생성 &amp;lt;VirtualHost *:8000&amp;gt; ServerName admin@wisoft.com ErrorLog &quot;logs/admin@wisoft.com-error_log&quot; CustomLog &quot;logs/admin@wisoft.com-access_log&quot; common ProxyRequests Off ProxyPreserveHost On &amp;lt;Proxy *&amp;gt; Order deny,allow Allow from all &amp;lt;/Proxy&amp;gt; ProxyPass / http://192.168.0.32:8080/ ProxyPassReverse / http://192.168.0.32:8080/ &amp;lt;/VirtualHost&amp;gt;</summary></entry><entry><title type="html">공인 아이피 확인 방법</title><link href="http://localhost:4000/puclib-ip-command/" rel="alternate" type="text/html" title="공인 아이피 확인 방법" /><published>2020-02-09T19:25:00+09:00</published><updated>2020-02-09T19:25:00+09:00</updated><id>http://localhost:4000/puclib-ip-command</id><content type="html" xml:base="http://localhost:4000/puclib-ip-command/">&lt;h4 class=&quot;no_toc&quot; id=&quot;공인-ip-확인&quot;&gt;공인 IP 확인&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) curl ifconfig.me
+#) elinks www.ipconfig.co.kr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Blog Author</name></author><summary type="html">공인 IP 확인 #) curl ifconfig.me #) elinks www.ipconfig.co.kr</summary></entry><entry><title type="html">우분투 다운로드 서버 확인</title><link href="http://localhost:4000/ubuntu-install-setup/" rel="alternate" type="text/html" title="우분투 다운로드 서버 확인" /><published>2020-02-09T19:25:00+09:00</published><updated>2020-02-09T19:25:00+09:00</updated><id>http://localhost:4000/ubuntu-install-setup</id><content type="html" xml:base="http://localhost:4000/ubuntu-install-setup/">&lt;h4 class=&quot;no_toc&quot; id=&quot;우분투-다운로드-서버-확인&quot;&gt;우분투 다운로드 서버 확인&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) cat /etc/apt/sources.list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 class=&quot;no_toc&quot; id=&quot;우분투-다운로드-서버-변경&quot;&gt;우분투 다운로드 서버 변경&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) sudo sed -i 's/archive.ubuntu.com/ftp.daum.net/g' /etc/apt/sources.list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Blog Author</name></author><summary type="html">우분투 다운로드 서버 확인 #) cat /etc/apt/sources.list 우분투 다운로드 서버 변경 #) sudo sed -i 's/archive.ubuntu.com/ftp.daum.net/g' /etc/apt/sources.list</summary></entry><entry><title type="html">메소드 확인 명령어</title><link href="http://localhost:4000/method-command/" rel="alternate" type="text/html" title="메소드 확인 명령어" /><published>2020-02-09T19:25:00+09:00</published><updated>2020-02-09T19:25:00+09:00</updated><id>http://localhost:4000/method-command</id><content type="html" xml:base="http://localhost:4000/method-command/">&lt;h4 class=&quot;no_toc&quot; id=&quot;메소드-확인&quot;&gt;메소드 확인&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) telnet 호스트 80/443
+#) GET / HTTP/1.1
+#) Host:ip add / dnsname
+#) X-Forwarded-For: 1.1.1.1
+#) User-Agent: iPhone
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Blog Author</name></author><summary type="html">메소드 확인 #) telnet 호스트 80/443 #) GET / HTTP/1.1 #) Host:ip add / dnsname #) X-Forwarded-For: 1.1.1.1 #) User-Agent: iPhone</summary></entry><entry><title type="html">OS 스펙 확인</title><link href="http://localhost:4000/spec-command/" rel="alternate" type="text/html" title="OS 스펙 확인" /><published>2020-02-09T19:09:00+09:00</published><updated>2020-02-09T19:09:00+09:00</updated><id>http://localhost:4000/spec-command</id><content type="html" xml:base="http://localhost:4000/spec-command/">&lt;p&gt;REDHAT LINUX 기준&lt;/p&gt;
+
+&lt;h4 class=&quot;no_toc&quot; id=&quot;os-정보&quot;&gt;OS 정보&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) cat /etc/redhat-release
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 class=&quot;no_toc&quot; id=&quot;os-bit-정보&quot;&gt;OS BIT 정보&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) getconf LONG_BIT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 class=&quot;no_toc&quot; id=&quot;memory-정보&quot;&gt;memory 정보&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) cat /proc/meminfo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 class=&quot;no_toc&quot; id=&quot;cpu-정보&quot;&gt;cpu 정보&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) cat /proc/cpuinfo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;AIX 기준&lt;/p&gt;
+
+&lt;h4 class=&quot;no_toc&quot; id=&quot;os-정보-1&quot;&gt;OS 정보&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) uname -r
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 class=&quot;no_toc&quot; id=&quot;os-bit-정보-1&quot;&gt;OS BIT 정보&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) /bin/isainfo -kv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 class=&quot;no_toc&quot; id=&quot;memory-정보-1&quot;&gt;memory 정보&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) prtconf | grep memory
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 class=&quot;no_toc&quot; id=&quot;cpu-정보-1&quot;&gt;cpu 정보&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#) psrinfo -p
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Blog Author</name></author><summary type="html">REDHAT LINUX 기준 OS 정보 #) cat /etc/redhat-release OS BIT 정보 #) getconf LONG_BIT memory 정보 #) cat /proc/meminfo cpu 정보 #) cat /proc/cpuinfo AIX 기준 OS 정보 #) uname -r OS BIT 정보 #) /bin/isainfo -kv memory 정보 #) prtconf | grep memory cpu 정보 #) psrinfo -p</summary></entry></feed>

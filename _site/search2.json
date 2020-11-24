@@ -1,0 +1,210 @@
+[
+  
+    {
+      "title"    : "_posts 경로 markdown 생성 스크립트",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/markdown-add-script/",
+      "date"     : "2020-11-24 20:01:52 +0900",
+      "content"   : "<h4 class=\"no_toc\" id=\"code\">Code</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"c\">#!/bin/bash</span>\n\n<span class=\"c\">#date=`date +%Y-%m-%d`</span>\n<span class=\"nb\">date</span><span class=\"o\">=</span><span class=\"si\">$(</span><span class=\"nb\">date</span> <span class=\"s1\">'+%Y-%m-%d'</span><span class=\"si\">)</span>\n<span class=\"nv\">datet</span><span class=\"o\">=</span><span class=\"si\">$(</span><span class=\"nb\">date</span> <span class=\"s1\">'+%Y-%m-%d %H:%M:%S'</span><span class=\"si\">)</span>\n\n<span class=\"nv\">gitpath</span><span class=\"o\">=</span> _posts 파일 경로\n\n<span class=\"k\">if</span> <span class=\"o\">[</span> <span class=\"nv\">$# </span><span class=\"nt\">-ne</span> 1 <span class=\"o\">]</span><span class=\"p\">;</span> <span class=\"k\">then\n            </span><span class=\"nb\">echo</span> <span class=\"s2\">\"Usage: </span><span class=\"si\">$(</span><span class=\"nb\">basename</span> <span class=\"nv\">$0</span><span class=\"si\">)</span><span class=\"s2\"> &lt;title&gt;\"</span>\n                <span class=\"nb\">exit </span>99\n        <span class=\"k\">fi\n\n        </span><span class=\"nv\">title</span><span class=\"o\">=</span><span class=\"nv\">$1</span>\n\n        <span class=\"nv\">path</span><span class=\"o\">=</span><span class=\"nv\">$gitpath</span>/<span class=\"nv\">$date</span>-<span class=\"nv\">$title</span>.md\n\n<span class=\"nb\">touch</span> <span class=\"nv\">$path</span>\n\n<span class=\"nb\">cat</span> <span class=\"o\">&lt;&lt;</span><span class=\"no\">__EOF__</span><span class=\"sh\">&gt;&gt; </span><span class=\"nv\">$path</span><span class=\"sh\">\n---\nlayout: post\ntitle:  </span><span class=\"nv\">$title</span><span class=\"sh\">\ndate:   </span><span class=\"nv\">$datet</span><span class=\"sh\"> +0900\ndescription: </span><span class=\"nv\">$title</span><span class=\"sh\">\n---\n</span><span class=\"no\">__EOF__\n</span></code></pre></div></div>\n"
+    } ,
+  
+    {
+      "title"    : "regular_expression_example",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/regular-expression-example/",
+      "date"     : "2020-07-14 13:10:35 +0900",
+      "content"   : "<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>평균 계산\ndata : 64 bytes from 8.8.8.8: icmp_seq=1 ttl=51 time=39.7 ms\ncommand : sed -n 's/^.*time=\\(.*\\) ms/\\1/p' aa | awk '{sum+=$1} END{print sum/NR}'\n - sed : 필터링과 텍스트를 변환하는 스트림 편집기\n - sed -n : 포함한 행만 출력\n - s/^.*time=\\(.*\\) ms/\\1/: \"^.*time=\\(.*\\) ms\"을 \"\\1\"로 치환\n - ^.* : 모든 문자열\n - \\(.*\\) : ( )그룹핑, \\(.*\\) = (.*) = 모든 문자열\n - \\1 : 그룹핑의 매개변수 = \\(.*\\)\n - p : 출력\n - aa : 파일 명\n - awk : 패턴 탐색과 처리를 위한 명령어\n - {sum+=$1} : 그룹핑의 값들을 더함\n - END{print sum/NR} : 더한 값들의 평균을 계산\n</code></pre></div></div>\n"
+    } ,
+  
+    {
+      "title"    : "Regular_expression",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/Regular-expression/",
+      "date"     : "2020-07-14 10:42:06 +0900",
+      "content"   : "<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>정규식 #\n[] : '[]'안의 문자는 바깥에서 하나의 문자로 취급\n  - ^ : '[]'안의 ^는 not\n  - - : a-z는 a부터 z까지 문자\n^ : 문자열 시작\n$ : 문자열 종료\n&amp; : 검색문자열 치환\n? : 없거나 1이거나\nDot(.) : \\n(줄바꿈)을 제외한 모든 문자 매칭\n+ : 하나 이상\n* : 0개 이상\n| : OR과 동일\n\\&lt; : 단어의 시작\n&gt; : 단어의 끝\nx{m,n} : m,n 구간 반복\n\\A : 문자열의 처음과 매칭\n\\Z : 문자열의 끝과 매칭\n( ) : 그루핑, 하나의 패턴구분자 안에 서브 패턴을 지정해서 사용\n\\s : 공백 문자\n\\b : 무자와 공백 사이\n\\d : 숫자[0-9]\n\\t : tab문자\n\n\n\n연산자 #\n[범위]/p: 지정 범위 출력\n[범위]/d: 지정 범위 삭제\n[범위]/문자1/문자2: 지정된 범위의 처음 나타난 문자를 문자2로\ns/문자1/문자2/: 문자1을 2로\ng: 모든 라인에 적용\n\n\\0 : 전체 결과\n\\1 : 재참조 메타 문자(그룹핑을 참조, 그룹핑 : ( ) 안에 있는 것)\n\n정규표현식 사이트 : https://regexr.com/\n\n</code></pre></div></div>\n"
+    } ,
+  
+    {
+      "title"    : "cygwin bash 설정 파일",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/cywin-bash-setting/",
+      "date"     : "2020-07-12 21:53:47 +0900",
+      "content"   : "<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>alias C:='cd /cygdrive/c'\nalias F:='cd /cygdrive/f'\nalias G:='cd /cygdrive/g'\nalias TMP:='cd /cygdrive/c/cygwin/tmp'\nalias CYG:='cd /cygdrive/c/cygwin'\nalias GIT:='cd /cygdrive/c/git'\nalias PY:='cd /cygdrive/c/python'\nalias cls='clear'\nalias euc='export LANG=ko_KR.euckr'\nalias utf='export LANG=ko_KR.utf8'\nalias tm='unset TMOUT'\nalias egrep='egrep --color=auto'\nalias fgrep='fgrep --color=auto'\nalias grep='grep --color=auto'\nalias ci='/cygdrive/c/cygwin/setup-x86_64.exe -q -P '\nalias gem='/cygdrive/c/Ruby26-x64/bin/gem.bat'\n\n\n# Original\n#export PS1=\"\\[\\e]0;\\w\\a\\]\\n\\[\\e[32m\\]\\u@\\h \\[\\e[33m\\]\\w\\[\\e[0m\\]\\n\\$ \"\n# 5c\n#export PS1=\"\\[\\e]0;\\w\\a\\]\\n\\[\\e[32m\\]5c \\[\\e[33m\\]\\w\\[\\e[0m\\]\\n\\$ \"\nexport PS1=\"\\[\\e]0;\\w\\a\\]\\[\\e[32m\\]5c \\[\\e[33m\\]\\w\\[\\e[0m\\]\\$ \"\n\nset -o vi\n\n</code></pre></div></div>\n"
+    } ,
+  
+    {
+      "title"    : "git 명령어",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/git-command/",
+      "date"     : "2020-07-12 21:41:30 +0900",
+      "content"   : "<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>git add *\ngit commit -m \"first blog update\"\ngit push -u origin master\n\ngit config --list\ngit config --global user.name \"userid\"\ngit config --global user.email \"user@email.com\"\n\nwarning: LF will be replaced by CRLF in _posts/2020-07-14-Regular_expression.markdown.\nThe file will have its original line endings in your working directory\n → Whitespace 에러, 유닉스 시스템에서는 한 줄의 끝이 LF(Line Feed)로 이루지기 때문에\n   git에게 혼란을 줌\n   해결 : git config --global core.autocrlf true\n\n</code></pre></div></div>\n"
+    } ,
+  
+    {
+      "title"    : "apache-tomcat connector",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/apache-tomcat-connect/",
+      "date"     : "2020-07-03 19:25:00 +0900",
+      "content"   : "<p>LoadModule 주석 해제</p>\n\n<figure class=\"highlight\"><pre><code class=\"language-c--\" data-lang=\"c++\"><span class=\"n\">LoadModule</span> <span class=\"n\">proxy_module</span> <span class=\"n\">modules</span><span class=\"o\">/</span><span class=\"n\">mod_proxy</span><span class=\"p\">.</span><span class=\"n\">so</span>\n<span class=\"n\">LoadModule</span> <span class=\"n\">proxy_http_module</span> <span class=\"n\">modules</span><span class=\"o\">/</span><span class=\"n\">mod_proxy_http</span><span class=\"p\">.</span><span class=\"n\">so</span></code></pre></figure>\n\n<p>VirtualHost 생성</p>\n\n<figure class=\"highlight\"><pre><code class=\"language-c--\" data-lang=\"c++\"><span class=\"o\">&lt;</span><span class=\"n\">VirtualHost</span> <span class=\"o\">*:</span><span class=\"mi\">8000</span><span class=\"o\">&gt;</span>\n    <span class=\"n\">ServerName</span> <span class=\"n\">admin</span><span class=\"err\">@</span><span class=\"n\">wisoft</span><span class=\"p\">.</span><span class=\"n\">com</span>\n    <span class=\"n\">ErrorLog</span> <span class=\"s\">\"logs/admin@wisoft.com-error_log\"</span>\n    <span class=\"n\">CustomLog</span> <span class=\"s\">\"logs/admin@wisoft.com-access_log\"</span> <span class=\"n\">common</span>\n\n    <span class=\"n\">ProxyRequests</span> <span class=\"n\">Off</span>\n    <span class=\"n\">ProxyPreserveHost</span> <span class=\"n\">On</span>\n\n    <span class=\"o\">&lt;</span><span class=\"n\">Proxy</span> <span class=\"o\">*&gt;</span>\n\t   <span class=\"n\">Order</span> <span class=\"n\">deny</span><span class=\"p\">,</span><span class=\"n\">allow</span>\n\t    <span class=\"n\">Allow</span> <span class=\"n\">from</span> <span class=\"n\">all</span>\n    <span class=\"o\">&lt;/</span><span class=\"n\">Proxy</span><span class=\"o\">&gt;</span>\n\n    <span class=\"n\">ProxyPass</span> <span class=\"o\">/</span> <span class=\"n\">http</span><span class=\"o\">:</span><span class=\"c1\">//192.168.0.32:8080/</span>\n    <span class=\"n\">ProxyPassReverse</span> <span class=\"o\">/</span> <span class=\"n\">http</span><span class=\"o\">:</span><span class=\"c1\">//192.168.0.32:8080/</span>\n<span class=\"o\">&lt;/</span><span class=\"n\">VirtualHost</span><span class=\"o\">&gt;</span></code></pre></figure>\n\n"
+    } ,
+  
+    {
+      "title"    : "우분투 다운로드 서버 확인",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/ubuntu-install-setup/",
+      "date"     : "2020-02-09 19:25:00 +0900",
+      "content"   : "<h4 class=\"no_toc\" id=\"우분투-다운로드-서버-확인\">우분투 다운로드 서버 확인</h4>\n\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) cat /etc/apt/sources.list\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"우분투-다운로드-서버-변경\">우분투 다운로드 서버 변경</h4>\n\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) sudo sed -i 's/archive.ubuntu.com/ftp.daum.net/g' /etc/apt/sources.list\n</code></pre></div></div>\n"
+    } ,
+  
+    {
+      "title"    : "공인 아이피 확인 방법",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/puclib-ip-command/",
+      "date"     : "2020-02-09 19:25:00 +0900",
+      "content"   : "<h4 class=\"no_toc\" id=\"공인-ip-확인\">공인 IP 확인</h4>\n\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) curl ifconfig.me\n#) elinks www.ipconfig.co.kr\n</code></pre></div></div>\n"
+    } ,
+  
+    {
+      "title"    : "메소드 확인 명령어",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/method-command/",
+      "date"     : "2020-02-09 19:25:00 +0900",
+      "content"   : "<h4 class=\"no_toc\" id=\"메소드-확인\">메소드 확인</h4>\n\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) telnet 호스트 80/443\n#) GET / HTTP/1.1\n#) Host:ip add / dnsname\n#) X-Forwarded-For: 1.1.1.1\n#) User-Agent: iPhone\n</code></pre></div></div>\n"
+    } ,
+  
+    {
+      "title"    : "OS 스펙 확인",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/spec-command/",
+      "date"     : "2020-02-09 19:09:00 +0900",
+      "content"   : "<p>REDHAT LINUX 기준</p>\n\n<h4 class=\"no_toc\" id=\"os-정보\">OS 정보</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) cat /etc/redhat-release\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"os-bit-정보\">OS BIT 정보</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) getconf LONG_BIT\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"memory-정보\">memory 정보</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) cat /proc/meminfo\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"cpu-정보\">cpu 정보</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) cat /proc/cpuinfo\n</code></pre></div></div>\n\n<hr />\n\n<p><br /></p>\n\n<p>AIX 기준</p>\n\n<h4 class=\"no_toc\" id=\"os-정보-1\">OS 정보</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) uname -r\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"os-bit-정보-1\">OS BIT 정보</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) /bin/isainfo -kv\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"memory-정보-1\">memory 정보</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) prtconf | grep memory\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"cpu-정보-1\">cpu 정보</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) psrinfo -p\n</code></pre></div></div>\n"
+    } ,
+  
+    {
+      "title"    : "리눅스 계정 명령어",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/linux-user-command/",
+      "date"     : "2020-02-05 18:28:00 +0900",
+      "content"   : "<h4 class=\"no_toc\" id=\"계정-확인\">계정 확인</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) chage -l 계정\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"계정-만료-변경\">계정 만료 변경</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) chage -M -1 계정\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"계정-패스워드-잠김-확인\">계정 패스워드 잠김 확인</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) pam_tally2 --user 아이디\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"계정-패스워드-잠김-초기화\">계정 패스워드 잠김 초기화</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) pam_tally2 --user 아이디 --reset\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"그룹-생성\">그룹 생성</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) groupadd -g GID group명\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"유저-생성\">유저 생성</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) useradd -d (home directory) -m -g (group name) (user name)\n</code></pre></div></div>\n\n<h4 class=\"no_toc\" id=\"유저-권한-부여\">유저 권한 부여</h4>\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>#) usermod -g GID (user ID)\n</code></pre></div></div>\n"
+    } ,
+  
+    {
+      "title"    : "Welcome to Jekyll",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/welcome-to-jekyll/",
+      "date"     : "2017-03-01 00:00:00 +0900",
+      "content"   : "<p><img src=\"https://user-images.githubusercontent.com/4943215/74586452-bcb15780-4fe7-11ea-94a8-7a9b52bf04b3.jpeg\" alt=\"Laptop\" /></p>\n\n<p>You’ll find this post in your <code class=\"highlighter-rouge\">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class=\"highlighter-rouge\">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>\n\n<p>To add new posts, simply add a file in the <code class=\"highlighter-rouge\">_posts</code> directory that follows the convention <code class=\"highlighter-rouge\">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>\n\n<p>Jekyll also offers powerful support for code snippets:</p>\n\n<figure class=\"highlight\"><pre><code class=\"language-ruby\" data-lang=\"ruby\"><span class=\"k\">def</span> <span class=\"nf\">print_hi</span><span class=\"p\">(</span><span class=\"nb\">name</span><span class=\"p\">)</span>\n  <span class=\"nb\">puts</span> <span class=\"s2\">\"Hi, </span><span class=\"si\">#{</span><span class=\"nb\">name</span><span class=\"si\">}</span><span class=\"s2\">\"</span>\n<span class=\"k\">end</span>\n<span class=\"n\">print_hi</span><span class=\"p\">(</span><span class=\"s1\">'Tom'</span><span class=\"p\">)</span>\n<span class=\"c1\">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>\n\n<p>Check out the <a href=\"http://jekyllrb.com/docs/home\">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href=\"https://github.com/jekyll/jekyll\">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href=\"https://talk.jekyllrb.com/\">Jekyll Talk</a>.</p>\n\n"
+    } ,
+  
+    {
+      "title"    : "Markdown examples",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/markdown-examples/",
+      "date"     : "2017-02-01 00:00:00 +0900",
+      "content"   : "<p><img src=\"https://user-images.githubusercontent.com/4943215/74586455-c8048300-4fe7-11ea-84ba-aa49f3abb014.jpeg\" alt=\"Coffee\" /></p>\n\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>\n\n<p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit.</p>\n\n<h2 id=\"heading-two-h2\">Heading Two (h2)</h2>\n\n<h3 id=\"heading-three-h3\">Heading Three (h3)</h3>\n\n<h4 id=\"heading-four-h4\">Heading Four (h4)</h4>\n\n<h5 id=\"heading-five-h5\">Heading Five (h5)</h5>\n\n<h6 id=\"heading-six-h6\">Heading Six (h6)</h6>\n\n<h2 id=\"blockquotes\">Blockquotes</h2>\n\n<h3 id=\"single-line\">Single line</h3>\n\n<blockquote>\n  <p>My mom always said life was like a box of chocolates. You never know what you’re gonna get.</p>\n</blockquote>\n\n<h3 id=\"multiline\">Multiline</h3>\n\n<blockquote>\n  <p>What do you get when you cross an insomniac, an unwilling agnostic and a dyslexic?</p>\n\n  <p>You get someone who stays up all night torturing himself mentally over the question of whether or not there’s a dog.</p>\n\n  <p>– <em>Hal Incandenza</em></p>\n</blockquote>\n\n<h2 id=\"horizontal-rule\">Horizontal Rule</h2>\n\n<hr />\n\n<h2 id=\"table\">Table</h2>\n\n<table>\n  <thead>\n    <tr>\n      <th>Title 1</th>\n      <th>Title 2</th>\n      <th>Title 3</th>\n      <th>Title 4</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>First entry</td>\n      <td>Second entry</td>\n      <td>Third entry</td>\n      <td>Fourth entry</td>\n    </tr>\n    <tr>\n      <td>Fifth entry</td>\n      <td>Sixth entry</td>\n      <td>Seventh entry</td>\n      <td>Eight entry</td>\n    </tr>\n    <tr>\n      <td>Ninth entry</td>\n      <td>Tenth entry</td>\n      <td>Eleventh entry</td>\n      <td>Twelfth entry</td>\n    </tr>\n    <tr>\n      <td>Thirteenth entry</td>\n      <td>Fourteenth entry</td>\n      <td>Fifteenth entry</td>\n      <td>Sixteenth entry</td>\n    </tr>\n  </tbody>\n</table>\n\n<h2 id=\"code\">Code</h2>\n\n<p>Source code can be included by fencing the code with three backticks. Syntax highlighting works automatically when specifying the language after the backticks.</p>\n\n<div class=\"highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code>```javascript\nfunction foo () {\n    return \"bar\";\n}\n```\n</code></pre></div></div>\n\n<p>This would be rendered as:</p>\n\n<div class=\"language-javascript highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><span class=\"kd\">function</span> <span class=\"nx\">foo</span> <span class=\"p\">()</span> <span class=\"p\">{</span>\n    <span class=\"k\">return</span> <span class=\"dl\">\"</span><span class=\"s2\">bar</span><span class=\"dl\">\"</span><span class=\"p\">;</span>\n<span class=\"p\">}</span>\n</code></pre></div></div>\n\n<h2 id=\"lists\">Lists</h2>\n\n<h3 id=\"unordered\">Unordered</h3>\n\n<ul>\n  <li>First item</li>\n  <li>Second item</li>\n  <li>Third item\n    <ul>\n      <li>First nested item</li>\n      <li>Second nested item</li>\n    </ul>\n  </li>\n</ul>\n\n<h3 id=\"ordered\">Ordered</h3>\n\n<ol>\n  <li>First item</li>\n  <li>Second item</li>\n  <li>Third item\n    <ol>\n      <li>First nested item</li>\n      <li>Second nested item</li>\n    </ol>\n  </li>\n</ol>\n"
+    } ,
+  
+    {
+      "title"    : "Advanced examples",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/advanced-examples/",
+      "date"     : "2017-01-01 00:00:00 +0900",
+      "content"   : "<p><img src=\"https://user-images.githubusercontent.com/4943215/55412536-edbba180-5567-11e9-9c70-6d33bca3f8ed.jpg\" alt=\"Swiss Alps\" /></p>\n\n<h2 id=\"mathjax\">MathJax</h2>\n\n<p>You can enable MathJax by setting <code class=\"highlighter-rouge\">mathjax: true</code> on a page or globally in the <code class=\"highlighter-rouge\">_config.yml</code>. Some examples:</p>\n\n<p><a href=\"https://en.wikipedia.org/wiki/Euler%27s_formula\">Euler’s formula</a> relates the  complex exponential function to the trigonometric functions.</p>\n\n\\[e^{i\\theta}=\\cos(\\theta)+i\\sin(\\theta)\\]\n\n<p>The <a href=\"https://en.wikipedia.org/wiki/Lagrangian_mechanics\">Euler-Lagrange</a> differential equation is the fundamental equation of calculus of variations.</p>\n\n\\[\\frac{\\mathrm{d}}{\\mathrm{d}t} \\left ( \\frac{\\partial L}{\\partial \\dot{q}} \\right ) = \\frac{\\partial L}{\\partial q}\\]\n\n<p>The <a href=\"https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation\">Schrödinger equation</a> describes how the quantum state of a quantum system changes with time.</p>\n\n\\[i\\hbar\\frac{\\partial}{\\partial t} \\Psi(\\mathbf{r},t) = \\left [ \\frac{-\\hbar^2}{2\\mu}\\nabla^2 + V(\\mathbf{r},t)\\right ] \\Psi(\\mathbf{r},t)\\]\n\n<h2 id=\"code\">Code</h2>\n\n<p>Embed code by putting <code class=\"highlighter-rouge\">{% highlight language %}</code> <code class=\"highlighter-rouge\">{% endhighlight %}</code> blocks around it. Adding the parameter <code class=\"highlighter-rouge\">linenos</code> will show source lines besides the code.</p>\n\n<figure class=\"highlight\"><pre><code class=\"language-c\" data-lang=\"c\"><span class=\"k\">static</span> <span class=\"kt\">void</span> <span class=\"nf\">asyncEnabled</span><span class=\"p\">(</span><span class=\"n\">Dict</span><span class=\"o\">*</span> <span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"kt\">void</span><span class=\"o\">*</span> <span class=\"n\">vAdmin</span><span class=\"p\">,</span> <span class=\"n\">String</span><span class=\"o\">*</span> <span class=\"n\">txid</span><span class=\"p\">,</span> <span class=\"k\">struct</span> <span class=\"n\">Allocator</span><span class=\"o\">*</span> <span class=\"n\">requestAlloc</span><span class=\"p\">)</span>\n<span class=\"p\">{</span>\n    <span class=\"k\">struct</span> <span class=\"n\">Admin</span><span class=\"o\">*</span> <span class=\"n\">admin</span> <span class=\"o\">=</span> <span class=\"n\">Identity_check</span><span class=\"p\">((</span><span class=\"k\">struct</span> <span class=\"n\">Admin</span><span class=\"o\">*</span><span class=\"p\">)</span> <span class=\"n\">vAdmin</span><span class=\"p\">);</span>\n    <span class=\"kt\">int64_t</span> <span class=\"n\">enabled</span> <span class=\"o\">=</span> <span class=\"n\">admin</span><span class=\"o\">-&gt;</span><span class=\"n\">asyncEnabled</span><span class=\"p\">;</span>\n    <span class=\"n\">Dict</span> <span class=\"n\">d</span> <span class=\"o\">=</span> <span class=\"n\">Dict_CONST</span><span class=\"p\">(</span><span class=\"n\">String_CONST</span><span class=\"p\">(</span><span class=\"s\">\"asyncEnabled\"</span><span class=\"p\">),</span> <span class=\"n\">Int_OBJ</span><span class=\"p\">(</span><span class=\"n\">enabled</span><span class=\"p\">),</span> <span class=\"nb\">NULL</span><span class=\"p\">);</span>\n    <span class=\"n\">Admin_sendMessage</span><span class=\"p\">(</span><span class=\"o\">&amp;</span><span class=\"n\">d</span><span class=\"p\">,</span> <span class=\"n\">txid</span><span class=\"p\">,</span> <span class=\"n\">admin</span><span class=\"p\">);</span>\n<span class=\"p\">}</span></code></pre></figure>\n\n<h2 id=\"gists\">Gists</h2>\n\n<p>With the <code class=\"highlighter-rouge\">jekyll-gist</code> plugin, which is preinstalled on Github Pages, you can embed gists simply by using the <code class=\"highlighter-rouge\">gist</code> command:</p>\n\n<script src=\"https://gist.github.com/5555251.js?file=gist.md\"></script>\n\n<h2 id=\"images\">Images</h2>\n\n<p>Upload an image to the <em>assets</em> folder and embed it with <code class=\"highlighter-rouge\">![title](/assets/name.jpg))</code>. Keep in mind that the path needs to be adjusted if Jekyll is run inside a subfolder.</p>\n\n<p>A wrapper <code class=\"highlighter-rouge\">div</code> with the class <code class=\"highlighter-rouge\">large</code> can be used to increase the width of an image or iframe.</p>\n\n<p><img src=\"https://user-images.githubusercontent.com/4943215/55412447-bcdb6c80-5567-11e9-8d12-b1e35fd5e50c.jpg\" alt=\"Flower\" /></p>\n\n<p><a href=\"https://unsplash.com/photos/iGrsa9rL11o\">Flower</a> by Tj Holowaychuk</p>\n\n<h2 id=\"embedded-content\">Embedded content</h2>\n\n<p>You can also embed a lot of stuff, for example from YouTube, using the <code class=\"highlighter-rouge\">embed.html</code> include.</p>\n\n<div style=\"position: relative; margin: 1.5em 0; padding-bottom: 56.25%;\">\n  <iframe style=\"position: absolute;\" src=\"https://www.youtube.com/embed/_C0A5zX-iqM\" width=\"100%\" height=\"100%\" frameborder=\"0\" allowfullscreen=\"\"></iframe>\n</div>\n\n"
+    } 
+  
+  
+    
+,
+  {
+    "title"    : "404: Page not found",
+    "category" : "",
+    "tags"     : "",
+    "url"      : "/404.html",
+    "date"     : "",
+    "content"   : "<article>\n  <header><h1>404</h1></header>\n  <p>Page not found</p>\n</article>\n"
+  }
+    
+  
+    
+,
+  {
+    "title"    : "About",
+    "category" : "",
+    "tags"     : "",
+    "url"      : "/about/",
+    "date"     : "",
+    "content"   : "<h2 id=\"installation\">Installation</h2>\n"
+  }
+    
+  
+    
+,
+  {
+    "title"    : "Archive",
+    "category" : "",
+    "tags"     : "",
+    "url"      : "/archive/",
+    "date"     : "",
+    "content"   : "<!--\n  * main page\n-->\n<article>\n  <header><h1>Archive</h1></header>\n  <ul class=\"archive\">\n    \n  </ul>\n  <ul id=\"pagination\" role=\"navigation\">\n    \n</ul>\n\n</article>\n\n"
+  }
+    
+  
+    
+  
+    
+  
+    
+,
+  {
+    "title"    : "Blog",
+    "category" : "",
+    "tags"     : "",
+    "url"      : "/",
+    "date"     : "",
+    "content"   : "\n  <!--\n  * main page\n-->\n<article>\n  <header><h1>Posts</h1></header>\n  <ul class=\"archive\">\n    \n    <div>\n      <time datetime=\"2020-11-24T20:01:52+09:00\">November 24 2020</time>\n      <h1><a href=\"/markdown-add-script/\">_posts 경로 markdown 생성 스크립트</a></h1>\n    </div>\n    \n    <div>\n      <time datetime=\"2020-07-14T13:10:35+09:00\">July 14 2020</time>\n      <h1><a href=\"/regular-expression-example/\">regular_expression_example</a></h1>\n    </div>\n    \n    <div>\n      <time datetime=\"2020-07-14T10:42:06+09:00\">July 14 2020</time>\n      <h1><a href=\"/Regular-expression/\">Regular_expression</a></h1>\n    </div>\n    \n    <div>\n      <time datetime=\"2020-07-12T21:53:47+09:00\">July 12 2020</time>\n      <h1><a href=\"/cywin-bash-setting/\">cygwin bash 설정 파일</a></h1>\n    </div>\n    \n    <div>\n      <time datetime=\"2020-07-12T21:41:30+09:00\">July 12 2020</time>\n      <h1><a href=\"/git-command/\">git 명령어</a></h1>\n    </div>\n    \n    <div>\n      <time datetime=\"2020-07-03T19:25:00+09:00\">July 03 2020</time>\n      <h1><a href=\"/apache-tomcat-connect/\">apache-tomcat connector</a></h1>\n    </div>\n    \n    <div>\n      <time datetime=\"2020-02-09T19:25:00+09:00\">February 09 2020</time>\n      <h1><a href=\"/ubuntu-install-setup/\">우분투 다운로드 서버 확인</a></h1>\n    </div>\n    \n    <div>\n      <time datetime=\"2020-02-09T19:25:00+09:00\">February 09 2020</time>\n      <h1><a href=\"/puclib-ip-command/\">공인 아이피 확인 방법</a></h1>\n    </div>\n    \n    <div>\n      <time datetime=\"2020-02-09T19:25:00+09:00\">February 09 2020</time>\n      <h1><a href=\"/method-command/\">메소드 확인 명령어</a></h1>\n    </div>\n    \n    <div>\n      <time datetime=\"2020-02-09T19:09:00+09:00\">February 09 2020</time>\n      <h1><a href=\"/spec-command/\">OS 스펙 확인</a></h1>\n    </div>\n    \n  </ul>\n  <ul id=\"pagination\" role=\"navigation\">\n    \n        \n        <!-- Previous Page-->\n        \n            <li id=\"page-prev\" class=\"disabled\"><span class=\"sr-only\">No Previous Page</span></li>\n        \n        <!-- numbering Count -->\n        \n            \n                <li class=\"page-number active\">1</li>\n                \n        \n            \n                <li class=\"page-number\"><a\n                            href=\"/blog/page2/\">2</a></li>\n            \n        \n        <!-- Next Page -->\n        \n            <li id=\"page-next\"><a href=\"/blog/page2/\"><span class=\"sr-only\">Next Page</span></a>\n            </li>\n        \n    \n</ul>\n\n</article>\n\n\n"
+  }
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+,
+  {
+    "title"    : "Blog",
+    "category" : "",
+    "tags"     : "",
+    "url"      : "/blog/page2/",
+    "date"     : "",
+    "content"   : "{% if site.show_excerpts %}\n  {% include home.html %}\n{% else %}\n  {% include archive.html title=\"Posts\" %}\n{% endif %}\n"
+  }
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+]
