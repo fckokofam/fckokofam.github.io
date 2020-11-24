@@ -34,7 +34,7 @@ comments:
 #  disqus_shortname: ""      # see https://disqus.com/
 #  isso_domain: ""           # see https://posativ.org/isso/
 
-paginate: 10   #페이징 처리 개수
+paginate: 5   #페이징 처리 개수
 paginate_path: "/blog/page:num/"  #URL 규칙
 
 keep_files: [assets]
